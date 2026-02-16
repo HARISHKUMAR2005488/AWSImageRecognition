@@ -1,0 +1,42 @@
+{
+  "Labels": [
+    {
+      "Name": "Person",
+      "Confidence": 99.87,
+      "Instances": [
+        {
+          "BoundingBox": {
+            "Width": 0.25,
+            "Height": 0.45,
+            "Left": 0.1,
+            "Top": 0.2
+          },
+          "Confidence": 99.87
+        }
+      ],
+      "Parents": []
+    },
+    {
+      "Name": "Human",
+      "Confidence": 99.87,
+      "Instances": [],
+      "Parents": []
+    },
+    {
+      "Name": "Smile",
+      "Confidence": 98.5,
+      "Instances": [],
+      "Parents": [
+        {
+          "Name": "Face"
+        }
+      ]
+    },
+    {
+      "Name": "Happy",
+      "Confidence": 97.2,
+      "Instances": [],
+      "Parents": []
+    }
+  ]
+}

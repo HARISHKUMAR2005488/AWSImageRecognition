@@ -1,0 +1,31 @@
+# AWS Credentials
+.aws/
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Images (exclude uploaded/labeled images from repo)
+labeled_*.jpg
+labeled_*.png
+labeled_*.jpeg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
