@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Image Recognition - Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>🖼️ AWS Image Recognition</h1>
+            <p class="subtitle">Upload an image to detect labels using Amazon Rekognition</p>
+        </header>
+
+        <!-- Flash Messages (Error/Success notifications) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            <span class="alert-icon">
+                                {% if category == 'error' %}⚠️{% else %}✓{% endif %}
+                            </span>
+                            <span class="alert-message">{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Upload Form -->
+        <div class="upload-section">
+            <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="upload-form">
+                
+                <!-- File Input -->
+                <div class="form-group">
+                    <label for="file" class="file-label">
+                        <span class="file-icon">📁</span>
+                        <span class="file-text">Choose Image File</span>
+                    </label>
+                    <input 
+                        type="file" 
+                        name="file" 
+                        id="file" 
+                        accept="image/png, image/jpeg, image/jpg, image/gif, image/bmp, image/webp"
+                        required
+                        class="file-input"
+                        onchange="updateFileName(this)"
+                    >
+                    <div id="file-name" class="file-name">No file selected</div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="btn-submit">
+                        <span class="btn-icon">🚀</span>
+                        <span class="btn-text">Upload & Analyze</span>
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Information Box -->
+            <div class="info-box">
+                <h3>ℹ️ Supported Formats</h3>
+                <p>PNG, JPG, JPEG, GIF, BMP, WEBP</p>
+                <p class="info-detail">Maximum file size: 10MB</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by AWS Rekognition | Flask Web Application</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for file name display -->
+    <script>
+        function updateFileName(input) {
+            const fileNameDisplay = document.getElementById('file-name');
+            const fileLabel = document.querySelector('.file-text');
+            
+            if (input.files && input.files[0]) {
+                const fileName = input.files[0].name;
+                const fileSize = (input.files[0].size / 1024 / 1024).toFixed(2); // Convert to MB
+                
+                fileNameDisplay.textContent = `${fileName} (${fileSize} MB)`;
+                fileNameDisplay.classList.add('file-selected');
+                fileLabel.textContent = 'Change File';
+            } else {
+                fileNameDisplay.textContent = 'No file selected';
+                fileNameDisplay.classList.remove('file-selected');
+                fileLabel.textContent = 'Choose Image File';
+            }
+        }
+    </script>
+</body>
+</html>

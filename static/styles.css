@@ -1,0 +1,543 @@
+/* ============================================================================
+   AWS Image Recognition - Professional Styling
+   ============================================================================ */
+
+/* ============================================================================
+   GLOBAL STYLES & RESET
+   ============================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+}
+
+/* ============================================================================
+   CONTAINER & LAYOUT
+   ============================================================================ */
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    color: #667eea;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: #666;
+    font-weight: 400;
+}
+
+/* ============================================================================
+   FLASH MESSAGES / ALERTS
+   ============================================================================ */
+
+.messages {
+    margin-bottom: 30px;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.alert-error {
+    background-color: #fee;
+    border-left: 4px solid #e74c3c;
+    color: #c0392b;
+}
+
+.alert-success {
+    background-color: #efd;
+    border-left: 4px solid #27ae60;
+    color: #1e8449;
+}
+
+.alert-icon {
+    font-size: 1.5em;
+}
+
+.alert-message {
+    flex: 1;
+    font-weight: 500;
+}
+
+/* ============================================================================
+   UPLOAD SECTION
+   ============================================================================ */
+
+.upload-section {
+    margin-bottom: 30px;
+}
+
+.upload-form {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* ============================================================================
+   FILE INPUT STYLING
+   ============================================================================ */
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.file-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.file-label:active {
+    transform: translateY(0);
+}
+
+.file-icon {
+    font-size: 1.3em;
+}
+
+.file-name {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: white;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    color: #999;
+    font-style: italic;
+    text-align: center;
+}
+
+.file-name.file-selected {
+    color: #27ae60;
+    border-color: #27ae60;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* ============================================================================
+   SUBMIT BUTTON
+   ============================================================================ */
+
+.btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+    width: 100%;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 1.2em;
+}
+
+/* ============================================================================
+   INFO BOX
+   ============================================================================ */
+
+.info-box {
+    background: #e8f4f8;
+    border-left: 4px solid #3498db;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-box h3 {
+    color: #2980b9;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.info-box p {
+    color: #34495e;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.info-detail {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    font-weight: 400;
+}
+
+/* ============================================================================
+   RESULTS SECTION
+   ============================================================================ */
+
+.results-section {
+    margin-bottom: 30px;
+}
+
+/* ============================================================================
+   IMAGE PREVIEW
+   ============================================================================ */
+
+.image-preview {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.image-preview h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.image-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    display: block;
+}
+
+.image-filename {
+    margin-top: 15px;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* ============================================================================
+   LABELS SECTION
+   ============================================================================ */
+
+.labels-section {
+    margin-bottom: 30px;
+}
+
+.labels-section h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.label-count {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.label-count strong {
+    color: #27ae60;
+    font-size: 1.2em;
+}
+
+/* ============================================================================
+   RESULTS TABLE
+   ============================================================================ */
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.results-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.results-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.results-table tbody tr {
+    border-bottom: 1px solid #ecf0f1;
+    transition: background-color 0.2s ease;
+}
+
+.results-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.results-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.results-table td {
+    padding: 15px;
+}
+
+.col-number {
+    width: 60px;
+    text-align: center;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.col-label {
+    width: 30%;
+}
+
+.label-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.05em;
+}
+
+.col-confidence {
+    width: 15%;
+}
+
+.confidence-value {
+    font-weight: 700;
+    color: #27ae60;
+    font-size: 1.1em;
+}
+
+.col-bar {
+    width: 40%;
+}
+
+/* ============================================================================
+   CONFIDENCE BAR
+   ============================================================================ */
+
+.confidence-bar-container {
+    background: #ecf0f1;
+    border-radius: 20px;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.confidence-bar {
+    background: linear-gradient(90deg, #27ae60 0%, #229954 100%);
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    transition: width 0.5s ease;
+    min-width: 50px;
+}
+
+.confidence-bar-text {
+    color: white;
+    font-weight: 700;
+    font-size: 0.85em;
+}
+
+/* ============================================================================
+   NO LABELS MESSAGE
+   ============================================================================ */
+
+.no-labels {
+    text-align: center;
+    padding: 40px;
+    background: #fff3cd;
+    border-radius: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+.no-labels p {
+    color: #856404;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* ============================================================================
+   ACTION BUTTONS
+   ============================================================================ */
+
+.actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.btn-back:active {
+    transform: translateY(0);
+}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #ecf0f1;
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .col-bar {
+        display: none;
+    }
+
+    .preview-image {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+    }
+
+    .btn-submit,
+    .btn-back {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}

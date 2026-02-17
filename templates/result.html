@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Image Recognition - Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>🎯 Detection Results</h1>
+            <p class="subtitle">Image analysis completed successfully</p>
+        </header>
+
+        <!-- Results Section -->
+        <div class="results-section">
+
+            <!-- Image Preview -->
+            <div class="image-preview">
+                <h2>📸 Uploaded Image</h2>
+                <div class="image-container">
+                    <img src="{{ s3_url }}" alt="Uploaded image: {{ filename }}" class="preview-image">
+                </div>
+                <p class="image-filename">{{ filename }}</p>
+            </div>
+
+            <!-- Labels Table -->
+            <div class="labels-section">
+                <h2>🏷️ Detected Labels</h2>
+                <p class="label-count">Found <strong>{{ label_count }}</strong> label(s) with confidence ≥ 75%</p>
+
+                {% if labels %}
+                <div class="table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th class="col-number">#</th>
+                                <th class="col-label">Label Name</th>
+                                <th class="col-confidence">Confidence</th>
+                                <th class="col-bar">Confidence Bar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for label in labels %}
+                            <tr>
+                                <td class="col-number">{{ loop.index }}</td>
+                                <td class="col-label">
+                                    <span class="label-name">{{ label.Name }}</span>
+                                </td>
+                                <td class="col-confidence">
+                                    <span class="confidence-value">{{ label.Confidence }}%</span>
+                                </td>
+                                <td class="col-bar">
+                                    <div class="confidence-bar-container">
+                                        <div class="confidence-bar" style="width: {{ label.Confidence }}%">
+                                            <span class="confidence-bar-text">{{ label.Confidence }}%</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="no-labels">
+                    <p>⚠️ No labels detected with confidence ≥ 75%</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions">
+                <a href="{{ url_for('index') }}" class="btn-back">
+                    <span class="btn-icon">⬅️</span>
+                    <span class="btn-text">Upload Another Image</span>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by AWS Rekognition | Flask Web Application</p>
+        </footer>
+    </div>
+</body>
+
+</html>
