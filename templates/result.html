@@ -31,7 +31,7 @@
             <!-- Labels Table -->
             <div class="labels-section">
                 <h2>🏷️ Detected Labels</h2>
-                <p class="label-count">Found <strong>{{ label_count }}</strong> label(s) with confidence ≥ 75%</p>
+                <p class="label-count">Found <strong>{{ label_count }}</strong> label(s) with confidence ≥ 55%</p>
 
                 {% if labels %}
                 <div class="table-container">
@@ -68,9 +68,26 @@
                 </div>
                 {% else %}
                 <div class="no-labels">
-                    <p>⚠️ No labels detected with confidence ≥ 75%</p>
+                    <p>⚠️ No labels detected with confidence ≥ 55%</p>
                 </div>
                 {% endif %}
+            </div>
+
+            <!-- Download Buttons -->
+            <div class="download-section">
+                <h2>📥 Download Options</h2>
+                <div class="download-buttons">
+                    <a href="{{ url_for('download_original', filename=filename) }}"
+                        class="btn-download btn-download-original">
+                        <span class="btn-icon">⬇️</span>
+                        <span class="btn-text">Download Original Image</span>
+                    </a>
+                    <a href="{{ url_for('download_labeled', filename=filename) }}"
+                        class="btn-download btn-download-labeled">
+                        <span class="btn-icon">🏷️</span>
+                        <span class="btn-text">Download Labeled Image</span>
+                    </a>
+                </div>
             </div>
 
             <!-- Action Buttons -->
